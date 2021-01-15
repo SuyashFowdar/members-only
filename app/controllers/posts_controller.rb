@@ -1,18 +1,17 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index, :show]
-  before_action :require_post_ownership, only: [:edit, :update, :destroy]
+  before_action :set_post, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :require_post_ownership, only: %i[edit update destroy]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.order("created_at DESC")
+    @posts = Post.all.order('created_at DESC')
   end
 
   # GET /posts/1
   # GET /posts/1.json
-  def show
-  end
+  def show; end
 
   # GET /posts/new
   def new
@@ -20,8 +19,7 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /posts
   # POST /posts.json
@@ -68,21 +66,18 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def post_params
-      params.require(:post).permit(:body)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
-    def require_post_ownership
-      unless own_post?
-        respond_to do |format|
-          format.html { redirect_to @post, error: 'Cannot edit user post' }
-        end
-      end
-    end
+  # Only allow a list of trusted parameters through.
+  def post_params
+    params.require(:post).permit(:body)
+  end
+
+  def require_post_ownership
+    respond_to { |format| format.html { redirect_to @post, error: 'Cannot edit user post' } } unless own_post?
+  end
 end

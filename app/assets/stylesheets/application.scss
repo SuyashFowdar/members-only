@@ -21,22 +21,22 @@ $lg:('-lg', 601px, 4000px);
 $breakpoints: ($all, $sm, $lg);
 
 @mixin sm {
-	@media screen and (min-width: nth($sm, 2)) and (max-width: nth($sm, 3)) {
-		@content;
-	}
+  @media screen and (min-width: nth($sm, 2)) and (max-width: nth($sm, 3)) {
+    @content;
+  }
 }
 
 @mixin lg {
-	@media screen and (min-width: nth($lg, 2)) and (max-width: nth($lg, 3)) {
-		@content;
-	}
+  @media screen and (min-width: nth($lg, 2)) and (max-width: nth($lg, 3)) {
+    @content;
+  }
 }
 
 @each $breakpoint in $breakpoints {
-	$point: nth($breakpoint, 1);
+  $point: nth($breakpoint, 1);
   $min: nth($breakpoint, 2);
-	$max: nth($breakpoint, 3);
-	
+  $max: nth($breakpoint, 3);
+
   @media screen and (min-width: $min) and (max-width: $max) {
     .hide#{$point} {
       display: none;
@@ -50,11 +50,11 @@ $breakpoints: ($all, $sm, $lg);
 
     .col#{$point} {
       flex-direction: column;
-		}
-		
-		.col-reverse#{$point} {
-			flex-direction: column-reverse;
-		}
+    }
+
+    .col-reverse#{$point} {
+      flex-direction: column-reverse;
+    }
 
     .main-center#{$point} {
       justify-content: center;
@@ -104,57 +104,57 @@ $breakpoints: ($all, $sm, $lg);
       height: 100%;
     }
 
-		.shadow-15#{$point} {
-			box-shadow: 0px 0px 15px 0px rgb(100, 100, 100);
+    .shadow-15#{$point} {
+      box-shadow: 0 0 15px 0 rgb(100, 100, 100);
     }
-    
+
     .padding8#{$point} {
       padding: 8px;
     }
-    
+
     .margin8#{$point} {
       margin: 8px;
     }
-		
-		.layout-padding8#{$point} {
-			&>div,
-			&>b,
-			&>button,
-			&>a,
-			&>input {
-				padding: 8px;
-			}
-		}
-		
-		.layout-padding4#{$point} {
-			&>div,
-			&>b,
-			&>button,
-			&>a,
-			&>input {
-				padding: 4px;
-			}
-		}
-		
-		.layout-margin8#{$point} {
-			&>div,
-			&>b,
-			&>button,
-			&>a,
-			&>input {
-				margin: 8px;
-			}
-		}
-		
-		.layout-margin4#{$point} {
-			&>div,
-			&>b,
-			&>button,
-			&>a,
-			&>input {
-				margin: 4px;
-			}
-		}
+
+    .layout-padding8#{$point} {
+      & > div,
+      & > b,
+      & > button,
+      & > a,
+      & > input {
+        padding: 8px;
+      }
+    }
+
+    .layout-padding4#{$point} {
+      & > div,
+      & > b,
+      & > button,
+      & > a,
+      & > input {
+        padding: 4px;
+      }
+    }
+
+    .layout-margin8#{$point} {
+      & > div,
+      & > b,
+      & > button,
+      & > a,
+      & > input {
+        margin: 8px;
+      }
+    }
+
+    .layout-margin4#{$point} {
+      & > div,
+      & > b,
+      & > button,
+      & > a,
+      & > input {
+        margin: 4px;
+      }
+    }
 
     @for $i from 1 through 20 {
       $width: percentage($i*5/100);
@@ -163,7 +163,7 @@ $breakpoints: ($all, $sm, $lg);
         width: $width;
       }
     }
-	}
+  }
 }
 
 body {
@@ -182,7 +182,7 @@ a {
   display: block;
   padding: 8px;
   border-radius: 3px;
-  
+
   &:hover {
     color: black;
     background-color: lightgray;
