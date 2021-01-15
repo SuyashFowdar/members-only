@@ -10,12 +10,22 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-info" %>
-    <% else %>
-      <%= link_to 'Sign In', new_user_session_path, class: "button is-info" %>
-      <%= link_to 'Sign Up', new_user_registration_path, class: "button is-info" %>
-    <% end %>
-    <%= yield %>
+    <nav class="shadow-15 row">
+      <div class="row new-post">
+        <%= link_to 'All Posts', posts_path %>
+        <%= link_to 'New Post', new_post_path %>
+      </div>
+      <div class="row">
+        <% if user_signed_in? %>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"button is-info" %>
+        <% else %>
+          <%= link_to 'Sign In', new_user_session_path, class: "button is-info" %>
+          <%= link_to 'Sign Up', new_user_registration_path, class: "button is-info" %>
+        <% end %>
+      </div>
+    </nav>
+    <div class="margin8 padding8">
+      <%= yield %>
+    </div>
   </body>
 </html>
