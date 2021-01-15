@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :require_post_ownership, only: [:edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
@@ -62,6 +63,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def own_post?
+    current_user == @post.user
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -71,5 +76,13 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:body)
+    end
+
+    def require_post_ownership
+      unless own_post?
+        respond_to do |format|
+          format.html { redirect_to @post, error: 'Cannot edit user post' }
+        end
+      end
     end
 end

@@ -10,8 +10,15 @@
     <%= post.body %>
   </div>
   <div class="row">
-    <div><%= link_to 'Show', post %></div>
-    <div><%= link_to 'Edit', edit_post_path(post) %></div>
-    <div><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    <%if user_signed_in? %>
+
+      <%if current_user == post.user %>
+        <div><%= link_to 'Edit', edit_post_path(post) %></div>
+        <div><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+      <%end%>
+    <%end%>
+    <% if request.env['PATH_INFO']=="/" || request.env['PATH_INFO']=="/posts"%>
+      <div><%= link_to "show", post %></div>
+    <%end%>
   </div>
 </div>
