@@ -1,0 +1,17 @@
+<div class="shadow-15 layout-padding8 post">
+  <div class="user">
+    <% if user_signed_in? %>
+      <%= post.user.name %>
+    <% else %>
+      Anonymous
+    <% end %>
+  </div>
+  <div class="body">
+    <%= post.body %>
+  </div>
+  <div class="row">
+    <div><%= link_to 'Show', post %></div>
+    <div><%= link_to 'Edit', edit_post_path(post) %></div>
+    <div><%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+  </div>
+</div>
