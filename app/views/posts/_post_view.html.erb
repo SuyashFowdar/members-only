@@ -1,0 +1,12 @@
+<div class="shadow-15 layout-padding8 post">
+  <div class="user">
+    <% if user_signed_in? %>
+      <%= post.user.name %>
+    <% else %>
+      Anonymous
+    <% end %>
+  </div>
+  <div class="body">
+    <%= post.body %>
+  </div>
+</div>

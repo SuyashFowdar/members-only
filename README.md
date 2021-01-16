@@ -30,7 +30,11 @@ Basic concepts of Ruby on Rails have been used, including:
 
 ## Screenshot
 
+### When user is not Logged In
+![When user is not Logged In](./app/assets/images/Screenshot.png)
 
+### When user is Logged In
+![When user is Logged In](./app/assets/images/Screenshot_Logged_In.png)
 
 
 ## Designed With
@@ -40,9 +44,8 @@ Basic concepts of Ruby on Rails have been used, including:
 - Git
 - Gitflows
 - Rubocop
-- Styleint
+- Stylelint
 - VS Code
-- [Heroku]()
 
 ## Contribute to this Project
 
@@ -58,9 +61,9 @@ Contributions, issues, and feature requests are welcome! Start by:
 
 ## Authors
 
-👤 **Angel Barros**
+👤 **Misori Simon**
 
-- GitHub: [@Missori-simon](https://github.com/Misori-simon)
+- GitHub: [@Misori-simon](https://github.com/Misori-simon)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/misori-simon-05906219b/)
 
 👤 **Suyash Fowdar**
